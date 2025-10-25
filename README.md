@@ -5,3 +5,5 @@
 > "The search for happiness is one of the chief sources of unhappiness."
 
 - Eric Hoffer
+
+Tokyo Weather: Rain 13.73°C
