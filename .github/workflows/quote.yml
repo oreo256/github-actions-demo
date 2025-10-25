@@ -1,0 +1,44 @@
+name: Quote README Updater
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch random quote
+        id: get_quote
+        run: |
+          response=$(curl -s https://zenquotes.io/api/random)
+          quote=$(echo "$response" | jq -r '.[0].q')
+          author=$(echo "$response" | jq -r '.[0].a')
+          echo "quote=$quote" >> $GITHUB_OUTPUT
+          echo "author=$author" >> $GITHUB_OUTPUT 
+
+      - name: Update README
+        run: |
+          echo "🗓️ Updated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > README.md
+          echo "" >> README.md
+          echo "## ✨ Quote of the Day" >> README.md
+          echo "" >> README.md
+          echo "> \"${{ steps.get_quote.outputs.quote }}\"" >> README.md
+          echo "" >> README.md
+          echo "- ${{ steps.get_quote.outputs.author }}" >> README.md
+
+      - name: Commit & push
+        run : |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: update quote of the day [skip ci]" || echo "No changes"
+          git push
