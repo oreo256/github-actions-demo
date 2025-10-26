@@ -5,3 +5,5 @@
 > "All know that the drop merges into the ocean, but few know that the ocean merges into the drop."
 
 - Kabir
+
+Tokyo Weather: Clouds 15.32°C
