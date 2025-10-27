@@ -5,3 +5,5 @@
 > "Dreams provide nourishment for the soul, just as a meal does for the body."
 
 - Paulo Coelho
+
+Tokyo Weather: Clouds 14.95°C
