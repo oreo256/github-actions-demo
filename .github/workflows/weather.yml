@@ -1,10 +1,13 @@
 name: Show today's weather
 
-on:
-  schedule:
-    - cron: "0 21 * * *"
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "0 21 * * *"
+#   workflow_dispatch:
 
+on:
+  workflow_dispatch:
+  
 permissions:
   contents: write
 

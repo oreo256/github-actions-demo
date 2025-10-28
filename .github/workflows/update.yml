@@ -1,7 +1,10 @@
 name: Update README with datetime
+# on:
+#   schedule:
+#     - cron: "0 0 * * *"
+#   workflow_dispatch:
+
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
